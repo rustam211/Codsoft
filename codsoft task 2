@@ -1,1 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            overflow-x: hidden;
+            background-image: url('assets/background.jpg'); /* Change the path as necessary */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repeating */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        p {
+            color: rgb(85, 85, 85);
+        }
+
+        /* Transition */
+        a,
+        .btn {
+            transition: all 300ms ease;
+        }
+
+        /* Navigation Styles */
+        nav,
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 17vh;
+        }
+
+        .nav-links {
+            gap: 2rem;
+            list-style: none;
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: grey;
+            text-decoration: underline;
+            text-underline-offset: 1rem;
+            text-decoration-color: rgb(181, 181, 181);
+        }
+
+        .logo {
+            font-size: 2rem;
+            opacity: 0.85;
+        }
+
+        .logo:hover {
+            cursor: default;
+        }
+
+        /* Hamburger Menu Styles */
+        #hamburger-nav {
+            display: none; /* Show on mobile */
+        }
+
+        /* Section Styles */
+        section {
+            padding-top: 4vh;
+            height: 96vh;
+            margin: 0 10rem;
+            box-sizing: border-box;
+            min-height: fit-content;
+        }
+
+        .section-container {
+            display: flex;
+            gap: 4rem;
+        }
+
+        /* Profile Section */
+        #profile {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            height: 80vh;
+        }
+
+        .section__pic-container {
+            display: flex;
+            height: 300px;
+            width: 300px;
+            margin: auto 0;
+        }
+
+        .section__text {
+            align-self: center;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 3rem;
+            text-align: center;
+            opacity: 0.92;
+        }
+
+        /* Button Styles */
+        .btn {
+            font-weight: 600;
+            padding: 1rem;
+            width: 8rem;
+            border-radius: 2rem;
+        }
+
+        .btn-color-1,
+        .btn-color-2 {
+            border: rgb(53, 53, 53) 0.1rem solid;
+        }
+
+        .btn-color-2 {
+            background: none;
+        }
+
+        .btn-color-1:hover,
+        .btn-color-2:hover {
+            background: rgb(53, 53, 53);
+            color: white;
+        }
+
+        /* About Section */
+        .about-containers {
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .details-container {
+            padding: 1.5rem;
+            flex: 1;
+            background: white;
+            border-radius: 2rem;
+            border: rgb(163, 163, 163) 0.1rem solid;
+            text-align: center;
+        }
+
+        /* Project Section */
+        .project-img {
+            border-radius: 1rem;
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            margin: auto;
+        }
+
+        /* Contact Section */
+        #contact {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 70vh;
+        }
+
+        .contact-info-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            height: 26vh;
+            margin: 0 1rem;
+            text-align: center;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: rgb(43, 43, 43);
+            color: aliceblue;
+        }
+
+        .whiteText {
+            color: aliceblue;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 1400px) {
+            #profile {
+                height: 83vh;
+                margin-bottom: 6rem;
+            }
+
+            .about-containers {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            #desktop-nav {
+                display: none;
+            }
+
+            #hamburger-nav {
+                display: flex;
+            }
+
+            #profile,
+            .section-container {
+                display: block;
+            }
+
+            .arrow {
+                display: none;
+            }
+
+            section,
+            .section-container {
+                height: fit-content;
+                margin: 0 5%;
+            }
+
+            .section__pic-container {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto 2rem;
+            }
+
+            .about-containers {
+                margin-top: 0;
+            }
+
+            #aboutTitle {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            #contact,
+            footer {
+                height: 40vh;
+            }
+
+            #profile {
+                height: 83vh;
+                margin-bottom: 0;
+            }
+
+            article {
+                font-size: 1rem;
+            }
+
+            footer nav {
+                height: fit-content;
+                margin-bottom: 2rem;
+            }
+
+            .about-containers,
+            .contact-info-upper-container,
+            .btn-container {
+                flex-wrap: wrap;
+            }
+
+            .contact-info-container {
+                margin: 0;
+            }
+
+            .contact-info-container p,
+            .nav-links li a {
+                font-size: 1rem;
+            }
+
+            .experience-sub-title {
+                font-size: 1.25rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .section__pic-container {
+                width: auto;
+                height: 50vw;
+                justify-content: center;
+            }
+
+            .section__text__p2 {
+                font-size: 1.25rem;
+            }
+
+            .about {
+                margin-top: 5rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            #aboutTitle {
+                margin-bottom: 2rem;
+            }
+
+            .text-container {
+                text-align: justify;
+                margin: none;
+                padding: 0;
+            }
+
+            #projects {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="desktop-nav">
+            <div class="logo">John Doe</div>
+            <div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <nav id="hamburger-nav">
+            <div class="logo">John Doe</div>
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="profile">
+            <div class="section__pic-container">
+                <img src="assets/profile-pic.jpg" alt="John Doe's profile picture" title="John Doe" />
+            </div>
+            <div class="section__text">
+                <p class="section__text__p1">Hello, I'm</p>
+                <h1 class="title">John Doe</h1>
+                <p class="section__text__p2">Software Developer</p>
+                <div class="btn-container">
+                    <a href="assets/Resume.pdf" target="_blank" rel="noopener">
+                        <button class="btn btn-color-2">See Resume</button>
+                    </a>
+                    <button class="btn btn-color-1">Contact Info</button>
+                </div>
+                <div id="socials-container">
+                    <a target="_blank" href="https://www.linkedin.com/" rel="noopener">
+                        <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon" />
+                    </a>
+                    <a target="_blank" href="https://github.com/" rel="noopener">
+                        <img src="./assets/github.png" alt="My Github profile" class="icon" />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <p class="section__text__p1">Get To Know More</p>
+            <h1 class="title">About Me</h1>
+            <div class="section-container">
+                <div class="about-details-container">
+                    <div class="about-containers">
+                        <div class="details-container">
+                            <img src="./assets/experience.png" alt="Experience icon" class="icon" />
+                            <h3>Educational Experience</h3>
+                            <p>2+ years <br />Frontend/Backend Development</p>
+                        </div>
+                        <div class="details-container">
+                            <img src="./assets/education.png" alt="Education icon" class="icon" />
+                            <h3>Education</h3>
+                            <p>Bachelor of Computer Application</p>
+                        </div>
+                    </div>
+                    <div class="text-container">
+                        <p>
+                            I'm <span class="highlight">Software Developer</span> from India. I build apps with a focus on 
+                            <span class="highlight">JavaScript React & Redux</span>, considering all aspects of 
+                            <span class="highlight">UI/UX</span>. I enjoy turning complex problems into beautiful and intuitive designs. 
+                            <br>A <span class="highlight">Software Engineer</span> who loves to solve problems, with experience in building 
+                            high-performing, responsive web applications. I have a keen interest in UI/UX and enjoy being challenged by 
+                            projects that require me to step outside my comfort zone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" />
+        </section>
+
+        <section id="projects">
+            <p class="section__text__p1">Browse My Recent</p>
+            <h1 class="title">Projects</h1>
+            <div class="experience-details-container">
+                <div class="about-containers">
+                    <div class="details-container color-container">
+                        <div class="article-container">
+                            <img src="./assets/projects/proj1.jpg" alt="Project 1" class="project-img" />
+                        </div>
+                        <h2 class="experience-sub-title project-title">Project 1</h2>
+                        <div class="btn-container">
+                            <a target="_blank" href="https://github.com/" rel="noopener">
+                                <button class="btn btn-color-2 project-btn">Github</button>
+                            </a>
+                            <a target="_blank" href="https://github.com" rel="noopener">
+                                <button class="btn btn-color-2 project-btn">Live Demo</button>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Add more projects here -->
+                </div>
+            </div>
+            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" />
+        </section>
+
+        <section id="contact">
+            <p class="section__text__p1">Get in Touch</p>
+            <h1 class="title">Contact Me</h1>
+            <div class="contact-info-upper-container">
+                <div class="contact-info-container">
+                    <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
+                    <p><a href="mailto:johndoe123@gmail.com">johndoe123@gmail.com</a></p>
+                </div>
+                <div class="contact-info-container">
+                    <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
+                    <p><a target="_blank" href="https://www.linkedin.com/in/johndoe/" rel="noopener">LinkedIn Profile</a></p>
+                </div>
+                <div class="contact-info-container">
+                    <img src="1366x768-whatsapp-icon-1979x2048-y3bz6p8d.png" alt="WhatsApp icon" class="icon contact-icon" />
+                    <p><a target="_blank" href="https://wa.me/1234567890" rel="noopener">WhatsApp</a></p>
+                </div>
+            </div>
+            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" />
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <p>&copy; 2023 John Doe</p>
+            <p>All rights reserved</p>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector(".menu-links");
+            const icon = document.querySelector(".hamburger-icon");
+            menu.classList.toggle("open");
+            icon.classList.toggle("open");
+        }
+    </script>
+</body>
+</html>
 
