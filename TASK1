@@ -1,0 +1,61 @@
+import tkinter as tk
+
+# Function to update expression
+def press(symbol):
+    current = input_text.get()
+    input_text.set(current + str(symbol))
+
+# Function to evaluate the expression
+def equal_press():
+    try:
+        result = str(eval(input_text.get()))
+        input_text.set(result)
+    except Exception:
+        input_text.set("Error")
+
+# Function to clear the input
+def clear():
+    input_text.set("")
+
+# Setup main window
+main = tk.Tk()
+main.title("Simple Calculator")
+main.geometry("300x400")
+main.resizable(False, False)
+
+# StringVar to store input
+input_text = tk.StringVar()
+
+# Input field
+input_frame = tk.Frame(main)
+input_frame.pack(pady=10)
+
+input_field = tk.Entry(input_frame, textvariable=input_text, font=("Arial", 20), width=18, bd=5, relief=tk.RIDGE, justify="right")
+input_field.grid(row=0, column=0, ipady=10)
+
+# Button layout
+btns_frame = tk.Frame(main)
+btns_frame.pack()
+
+buttons = [
+    ('7', '8', '9', '/'),
+    ('4', '5', '6', '*'),
+    ('1', '2', '3', '-'),
+    ('0', '.', '=', '+')
+]
+
+# Create buttons dynamically
+for row_index, row in enumerate(buttons):
+    for col_index, symbol in enumerate(row):
+        if symbol == '=':
+            btn = tk.Button(btns_frame, text=symbol, width=5, height=2, font=("Arial", 16), command=equal_press)
+        else:
+            btn = tk.Button(btns_frame, text=symbol, width=5, height=2, font=("Arial", 16), command=lambda s=symbol: press(s))
+        btn.grid(row=row_index, column=col_index, padx=5, pady=5)
+
+# Clear button
+clear_btn = tk.Button(main, text="Clear", width=22, height=2, font=("Arial", 12), bg="red", fg="white", command=clear)
+clear_btn.pack(pady=10)
+
+# Run the app
+main.mainloop()
